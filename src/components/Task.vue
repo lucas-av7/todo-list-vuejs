@@ -1,5 +1,6 @@
 <template>
-  <div class="task" :class="taskState">
+  <div class="task" :class="taskState"
+    @click="toggleState">
     <p>{{ task.name }}</p>
   </div>
 </template>
@@ -15,6 +16,11 @@ export default {
         done: !this.task.pending,
         pending: this.task.pending
       }
+    }
+  },
+  methods: {
+    toggleState() {
+      this.task.pending = !this.task.pending
     }
   }
 }
@@ -32,7 +38,7 @@ export default {
     justify-content: center;
     font-size: 1.5rem;
     text-align: center;
-    
+    cursor: pointer;
   }
 
   .task p {
