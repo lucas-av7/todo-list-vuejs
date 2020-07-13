@@ -2,7 +2,8 @@
   <div id="app">
     <h1 class="titulo">Lista de tarefas</h1>
     <NewTask :tasks="tasks" :addTask="addTask" />
-    <ProgressBar :tasks="tasks" />
+    <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
+    <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
     <TaskGrid :tasks="tasks" />
   </div>
 </template>
@@ -17,10 +18,7 @@ export default {
   components: { NewTask, TaskGrid, ProgressBar },
   data() {
     return {
-      tasks: [
-        { name: 'Jogar o lixo', pending: true },
-        { name: 'Jogar bola', pending: false },
-      ]
+      tasks: []
     }
   },
   methods: {
@@ -60,5 +58,10 @@ export default {
 
   .titulo {
     font-size: 3.0rem;
+  }
+
+  .frase-inicio {
+    margin-top: 25px;
+    font-size: 1.5rem;
   }
 </style>
