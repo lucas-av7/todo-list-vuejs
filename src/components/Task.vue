@@ -24,6 +24,7 @@ export default {
   .task {
     width: 220px;
     height: 110px;
+    padding: 5px;
     border-radius: 8px;
     margin: 5px;
     display: flex;

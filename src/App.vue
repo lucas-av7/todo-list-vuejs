@@ -2,6 +2,7 @@
   <div id="app">
     <h1 class="titulo">Lista de tarefas</h1>
     <NewTask :tasks="tasks" :addTask="addTask" />
+    <ProgressBar :tasks="tasks" />
     <TaskGrid :tasks="tasks" />
   </div>
 </template>
@@ -9,10 +10,11 @@
 <script>
 import NewTask from './components/NewTask.vue'
 import TaskGrid from './components/TaskGrid.vue'
+import ProgressBar from './components/ProgressBar.vue'
 
 export default {
   name: 'App',
-  components: { NewTask, TaskGrid },
+  components: { NewTask, TaskGrid, ProgressBar },
   data() {
     return {
       tasks: [
