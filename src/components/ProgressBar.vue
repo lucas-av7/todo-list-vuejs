@@ -32,6 +32,7 @@ export default {
     align-items: center;
     justify-content: center;
     position: relative;
+    user-select: none;
   }
 
   .progress {

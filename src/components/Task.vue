@@ -37,10 +37,11 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     cursor: pointer;
     position: relative;
+    user-select: none;
   }
 
   .task p {
@@ -49,12 +50,14 @@ export default {
   }
 
   .done {
-    background-color: green;
+    background-color: #007F00;
     text-decoration: line-through;
+    border-left: 10px solid #004C00;
   }
 
   .pending {
     background-color: red;
+    border-left: 10px solid #B20000;
   }
 
   .close {
@@ -71,10 +74,10 @@ export default {
   }
 
   .done .close {
-    background-color: greenyellow;
+    background-color: #004C00;
   }
 
   .pending .close {
-    background-color: brown;
+    background-color: #B20000;
   }
 </style>
