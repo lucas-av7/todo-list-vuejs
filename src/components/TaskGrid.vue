@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style>
-
+  .tasks {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 </style>
