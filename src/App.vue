@@ -24,14 +24,25 @@ export default {
   methods: {
     addTask(task) {
       let taskTrim = task.trim()
-      let isUnique = this.tasks.filter(t => t.name === task).length === 0
+      let isUnique = this.tasks.filter(t => t.name === taskTrim).length === 0
       if(isUnique && taskTrim !== '') {
-        this.tasks.push({ name: task, pending: true })
+        this.tasks.push({ name: taskTrim, pending: true })
       }
     },
     deleteTask(i) {
       this.tasks.splice(i, 1)
     }
+  },
+  watch: {
+    tasks: {
+      deep: true,
+      handler() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      }
+    }
+  },
+  created() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks')) || []
   }
 }
 </script>
