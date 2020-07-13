@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 class="titulo">Lista de tarefas</h1>
-    <NewTask />
+    <NewTask :tasks="tasks" :addTask="addTask" />
     <TaskGrid :tasks="tasks" />
   </div>
 </template>
@@ -19,6 +19,13 @@ export default {
         { name: 'Jogar o lixo', pending: true },
         { name: 'Jogar bola', pending: false },
       ]
+    }
+  },
+  methods: {
+    addTask(task) {
+      if(this.tasks.filter(t => t.name === task).length === 0) {
+        this.tasks.push({ name: task, pending: true })
+      }
     }
   }
 }
