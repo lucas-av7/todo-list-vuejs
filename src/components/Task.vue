@@ -1,6 +1,7 @@
 <template>
   <div class="task" :class="taskState"
     @click="toggleState">
+    <span class="close" @click.stop="$emit('deleteTask')">x</span>
     <p>{{ task.name }}</p>
   </div>
 </template>
@@ -8,7 +9,7 @@
 <script>
 export default {
   props: {
-    task: { type: Object, required: true }
+    task: { type: Object, required: true },
   },
   computed: {
     taskState() {
@@ -39,6 +40,7 @@ export default {
     font-size: 1.5rem;
     text-align: center;
     cursor: pointer;
+    position: relative;
   }
 
   .task p {
@@ -53,5 +55,26 @@ export default {
 
   .pending {
     background-color: red;
+  }
+
+  .close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .done .close {
+    background-color: greenyellow;
+  }
+
+  .pending .close {
+    background-color: brown;
   }
 </style>

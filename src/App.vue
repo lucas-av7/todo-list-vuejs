@@ -4,7 +4,7 @@
     <NewTask :tasks="tasks" :addTask="addTask" />
     <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
     <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
-    <TaskGrid :tasks="tasks" />
+    <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
   </div>
 </template>
 
@@ -28,6 +28,9 @@ export default {
       if(isUnique && taskTrim !== '') {
         this.tasks.push({ name: task, pending: true })
       }
+    },
+    deleteTask(i) {
+      this.tasks.splice(i, 1)
     }
   }
 }

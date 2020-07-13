@@ -1,6 +1,7 @@
 <template>
   <div class="tasks">
-    <Task v-for="task in tasks" :key="task.name" :task="task" />
+    <Task v-for="(task, i) in tasks" :key="task.name" :task="task"
+      @deleteTask="$emit('deleteTask', i)" />
   </div>
 </template>
 
