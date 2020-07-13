@@ -23,7 +23,9 @@ export default {
   },
   methods: {
     addTask(task) {
-      if(this.tasks.filter(t => t.name === task).length === 0) {
+      let taskTrim = task.trim()
+      let isUnique = this.tasks.filter(t => t.name === task).length === 0
+      if(isUnique && taskTrim !== '') {
         this.tasks.push({ name: task, pending: true })
       }
     }
