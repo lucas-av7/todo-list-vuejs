@@ -9,4 +9,4 @@ Pequeno projeto para por em prova os conhecimentos obtidos no estudo de VueJS.
 - Marcar como concluída ou desmarcar
 - Salvamento das tarefas no LocalStorage do navegador
 
-### Veja online: [Heroku](https://lucas-av7.github.io/todo-list-vuejs/)
+### Veja online: [Github Pages](https://lucas-av7.github.io/todo-list-vuejs/)
