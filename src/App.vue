@@ -23,10 +23,10 @@ export default {
   },
   methods: {
     addTask(task) {
-      let taskTrim = task.trim().toLowerCase()
-      let isUnique = this.tasks.filter(t => t.name === taskTrim).length === 0
-      if(isUnique && taskTrim !== '') {
-        this.tasks.push({ name: taskTrim, pending: true })
+      let taskLowerCase = task.toLowerCase()
+      let isUnique = this.tasks.filter(t => t.name === taskLowerCase).length === 0
+      if(isUnique && taskLowerCase !== '') {
+        this.tasks.push({ name: taskLowerCase, pending: true })
       }
     },
     deleteTask(i) {

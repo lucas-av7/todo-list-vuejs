@@ -1,6 +1,6 @@
 <template>
   <div class="new-task">
-    <input type="text" v-model="taskText" @keypress.enter="addTask(taskText), taskText = ''" >
+    <input type="text" v-model.trim="taskText" @keypress.enter="addTask(taskText), taskText = ''" >
     <button @click="addTask(taskText), taskText = ''">Adicionar</button>
   </div>
 </template>
