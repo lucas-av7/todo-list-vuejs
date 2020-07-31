@@ -1,11 +1,18 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1 class="titulo">Lista de tarefas</h1>
-      <NewTask :tasks="tasks" :addTask="addTask" />
-      <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
-      <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
-      <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+      <div class="layout-telefone">
+        <span class="docker"></span>
+        <span class="alto-falante"></span>
+        <span class="camera"></span>
+      </div>
+      <div class="aplicativo">
+        <h1 class="titulo">Lista de tarefas</h1>
+        <NewTask :tasks="tasks" :addTask="addTask" />
+        <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
+        <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
+        <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+      </div>
     </div>
   </div>
 </template>
@@ -76,24 +83,91 @@ export default {
   }
 
   .container {
-    width: 380px;
+    width: 330px;
     height: 550px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    border-radius: 25px;
-    background-color: white;
+    position: relative;
+  }
+
+  .aplicativo {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
   }
 
   .titulo {
-    font-size: 3.0rem;
+    font-size: 2.0rem;
   }
 
   .frase-inicio {
     margin-top: 25px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  /* Desenho do telefone */
+  .layout-telefone {
+    width: 100%;
+    height: 100%;
+    border: 8px solid black;
+    border-radius: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+  }
+
+  .docker {
+    width: 180px;
+    height: 33px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .alto-falante {
+    width: 45px;
+    height: 8px;
+    background: #444;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .camera {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #444;
+    position: absolute;
+    top: 3px;
+    right: 100px;
+  }
+
+  .camera::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>
