@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <h1 class="titulo">Lista de tarefas</h1>
-    <NewTask :tasks="tasks" :addTask="addTask" />
-    <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
-    <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
-    <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+    <div class="container">
+      <h1 class="titulo">Lista de tarefas</h1>
+      <NewTask :tasks="tasks" :addTask="addTask" />
+      <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
+      <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
+      <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+    </div>
   </div>
 </template>
 
@@ -60,16 +62,30 @@ export default {
     background: linear-gradient(to right, #C5796D, #DBE6F6);
     font-family: 'Roboto', sans-serif;
     font-size: 62.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #app {
-    max-width: 960px;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    width: 380px;
+    height: 550px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: white;
   }
 
   .titulo {
