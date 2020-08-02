@@ -13,5 +13,5 @@ Pequeno projeto para por em prova os conhecimentos obtidos no estudo de VueJS.
 
 ### Algumas capturas de tela
 ![Tela inicial](readme-assets/homepage.jpg)
-![Adicionar tarefa](readme-assets/addTask.jpg)
+![Adicionar tarefa](readme-assets/addtask.jpg)
 ![Tarefas](readme-assets/tasks.jpg)
