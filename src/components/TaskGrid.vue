@@ -26,4 +26,10 @@ export default {
     justify-content: flex-start;
     align-items: center;
   }
+
+  @media screen and (max-width: 900px) {
+    .tasks {
+      height: calc(100vh - 200px);
+    }
+  }
 </style>

@@ -48,7 +48,7 @@ export default {
     bottom: 0;
     left: 0;
     width: 314px;
-    height: 120px;
+    height: 100px;
     background-color: white;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -58,7 +58,7 @@ export default {
   }
 
   .new-task input {
-    width: 200px;
+    width: 235px;
     height: 40px;
     padding: 10px;
     outline: none;
@@ -75,5 +75,12 @@ export default {
     background-color: transparent;
     cursor: pointer;
     font-size: 1.0rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    .input-field {
+      width: 100%;
+      border-radius: 0;
+    }
   }
 </style>

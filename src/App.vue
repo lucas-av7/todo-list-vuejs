@@ -147,22 +147,34 @@ export default {
     margin-top: 90px;
   }
 
-/* Transitions */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+  /* Transitions */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
 
-.fade-enter-active {
-  animation: fade-in 0.2s ease;
-}
-.fade-leave-active {
-    animation: fade-out 0.2s ease;
-}
+  .fade-enter-active {
+    animation: fade-in 0.2s ease;
+  }
+  .fade-leave-active {
+      animation: fade-out 0.2s ease;
+  }
 
+  @media screen and (max-width: 900px) {
+    .aplicativo {
+      width: 100%;
+      height: 100%;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
 </style>

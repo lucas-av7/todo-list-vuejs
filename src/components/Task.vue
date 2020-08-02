@@ -29,14 +29,15 @@ export default {
 
 <style>
   .task {
-    width: 240px;
-    min-height: 30px;
+    width: 260px;
+    min-height: 35px;
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
     cursor: pointer;
     position: relative;
     user-select: none;
+    line-height: 1.5rem;
   }
 
   .task p {

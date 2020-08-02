@@ -22,7 +22,7 @@ export default {
 
 <style>
   .progress-bar {
-    width: 80%;
+    width: 280px;
     height: 30px;
     border: 2px solid #000;
     border-radius: 8px;

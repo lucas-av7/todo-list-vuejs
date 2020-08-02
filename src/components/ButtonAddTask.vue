@@ -29,4 +29,10 @@ export default {
     font-size: 2.5rem;
     color: #00BFA6;
   }
+
+  @media screen and (max-width: 900px) {
+    .buttonAddTask {
+      bottom: 50px;
+    }
+  }
 </style>
