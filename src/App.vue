@@ -4,14 +4,18 @@
       <PhoneConcept />
       <div class="aplicativo">
         <h1 class="titulo">Lista de tarefas</h1>
-        <NewTask v-if="newTaskView" :tasks="tasks" :addTask="addTask" @closeAddTask="newTaskView = false" />
+        <transition name="fade">
+          <NewTask v-if="newTaskView" :tasks="tasks" :addTask="addTask" @closeAddTask="newTaskView = false" />
+        </transition>  
         <ButtonAddTask @clickButton="newTaskView = true" />
-        <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
-        <div class="frase-inicio" v-show="tasks.length == 0">
+        <div class="frase-inicio" v-if="tasks.length == 0">
           <img src="./assets/tasks.png" alt="New Tasks">
           <p class="frase-inicio">Adicione novas tarefas :)</p>
         </div>
-        <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+        <template v-else>
+          <ProgressBar :tasks="tasks" />
+          <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
+        </template>
       </div>
     </div>
   </div>
@@ -142,5 +146,23 @@ export default {
     width: 80%;
     margin-top: 90px;
   }
+
+/* Transitions */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-enter-active {
+  animation: fade-in 0.2s ease;
+}
+.fade-leave-active {
+    animation: fade-out 0.2s ease;
+}
 
 </style>
