@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="layout-telefone">
-        <span class="docker"></span>
-        <span class="alto-falante"></span>
-        <span class="camera"></span>
-      </div>
+      <PhoneConcept />
       <div class="aplicativo">
         <h1 class="titulo">Lista de tarefas</h1>
-        <NewTask :tasks="tasks" :addTask="addTask" />
+        <NewTask v-if="newTaskView" :tasks="tasks" :addTask="addTask" @closeAddTask="newTaskView = false" />
+        <ButtonAddTask @clickButton="newTaskView = true" />
         <ProgressBar v-if="tasks.length > 0" :tasks="tasks" />
-        <p class="frase-inicio" v-else>Adicione novas tarefas :)</p>
+        <div class="frase-inicio" v-show="tasks.length == 0">
+          <img src="./assets/tasks.png" alt="New Tasks">
+          <p class="frase-inicio">Adicione novas tarefas :)</p>
+        </div>
         <TaskGrid :tasks="tasks" @deleteTask="deleteTask" />
       </div>
     </div>
@@ -18,16 +18,19 @@
 </template>
 
 <script>
-import NewTask from './components/NewTask.vue'
-import TaskGrid from './components/TaskGrid.vue'
-import ProgressBar from './components/ProgressBar.vue'
+import NewTask from './components/NewTask'
+import TaskGrid from './components/TaskGrid'
+import ProgressBar from './components/ProgressBar'
+import PhoneConcept from './components/PhoneConcept'
+import ButtonAddTask from './components/ButtonAddTask'
 
 export default {
   name: 'App',
-  components: { NewTask, TaskGrid, ProgressBar },
+  components: { NewTask, TaskGrid, ProgressBar, PhoneConcept, ButtonAddTask },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      newTaskView: false,
     }
   },
   methods: {
@@ -37,6 +40,7 @@ export default {
       if(isUnique && taskLowerCase !== '') {
         this.tasks.push({ name: taskLowerCase, pending: true })
       }
+      this.newTaskView = false
     },
     deleteTask(i) {
       this.tasks.splice(i, 1)
@@ -47,6 +51,14 @@ export default {
       deep: true,
       handler() {
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      }
+    },
+    newTaskView() {
+      const app = document.querySelector('.aplicativo')
+      if (this.newTaskView) {
+        app.style.overflowY = 'hidden'
+      } else {
+        app.style.overflowY = 'scroll'
       }
     }
   },
@@ -80,6 +92,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
   }
 
   .container {
@@ -91,83 +104,43 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
   }
 
   .aplicativo {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 1;
+    position: relative;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
   }
 
   .titulo {
-    font-size: 2.0rem;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   .frase-inicio {
-    margin-top: 25px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Desenho do telefone */
-  .layout-telefone {
-    width: 100%;
-    height: 100%;
-    border: 8px solid black;
-    border-radius: 25px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: white;
+  .frase-inicio img {
+    width: 80%;
+    margin-top: 90px;
   }
 
-  .docker {
-    width: 180px;
-    height: 33px;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-  }
-
-  .alto-falante {
-    width: 45px;
-    height: 8px;
-    background: #444;
-    border-radius: 10px;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .camera {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #444;
-    position: absolute;
-    top: 3px;
-    right: 100px;
-  }
-
-  .camera::after {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 </style>

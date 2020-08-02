@@ -43,8 +43,8 @@ export default {
   .bar {
     height: 100%;
     position: absolute;
-    background-color: green;
-    border-radius: 8px;
+    background-color: #25af25;
+    border-radius: 5px;
     align-self: flex-start;
   }
 </style>

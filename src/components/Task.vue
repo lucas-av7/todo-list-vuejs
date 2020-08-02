@@ -29,55 +29,57 @@ export default {
 
 <style>
   .task {
-    width: 220px;
-    height: 110px;
+    width: 240px;
+    min-height: 30px;
     padding: 5px;
-    border-radius: 8px;
+    border-radius: 5px;
     margin: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    text-align: center;
     cursor: pointer;
     position: relative;
     user-select: none;
   }
 
   .task p {
+    text-align: left;
     width: 100%;
     word-wrap: break-word;
+    font-size: 1.0rem;
+    padding-right: 20px;
   }
 
   .done {
-    background-color: #007F00;
+    background-color: #25af25;
     text-decoration: line-through;
-    border-left: 10px solid #004C00;
+    border-left: 10px solid #086d08;
   }
 
   .pending {
-    background-color: red;
-    border-left: 10px solid #B20000;
+    background-color: tomato;
+    border-left: 10px solid #b32e2e;
   }
 
   .close {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     position: absolute;
-    right: 7px;
-    top: 7px;
-    font-size: 1rem;
+    right: 6px;
+    top: 6px;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .done .close {
-    background-color: #004C00;
+    background-color: #086d08;
+    color: #25af25;
   }
 
   .pending .close {
-    background-color: #B20000;
+    background-color: #b32e2e;
+    color: tomato;
   }
 </style>

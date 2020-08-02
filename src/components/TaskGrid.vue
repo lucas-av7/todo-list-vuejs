@@ -19,8 +19,11 @@ export default {
 <style>
   .tasks {
     width: 100%;
+    height: 380px;
+    overflow-y: scroll;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 </style>
